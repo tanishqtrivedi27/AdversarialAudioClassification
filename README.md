@@ -4,5 +4,8 @@ The project deals with conducting thorough experiments to investigate the influe
 
 We also examine transferability of adversarial attacks, both class-aware and unaware, across different deep models considering both targeted and untargeted attack scenarios.
 
-To do: Add PPT 
-Results: https://docs.google.com/spreadsheets/d/1XqUkbvIkWKFGIn7iM9qxf_aic262oZAPmHTzMqznIqY/edit?usp=sharing
+### Slides
+[Slides](https://drive.google.com/file/d/1M7Tqll-uw1JxA4CziRJ59d7gZkiMCcGT/view?usp=sharing)
+
+### Results
+[Results](https://docs.google.com/spreadsheets/d/1XqUkbvIkWKFGIn7iM9qxf_aic262oZAPmHTzMqznIqY/edit?usp=sharing)
