@@ -21,7 +21,6 @@ def create_h5_dataset(annotations_file, audio_dir, sample_rate, device, h5_file_
     ])
 
     annotations = pd.read_csv(annotations_file)
-    data = {}
     
     with h5py.File(h5_file_path, 'w') as hf:
         for i, row in annotations.iterrows():
@@ -34,8 +33,6 @@ def create_h5_dataset(annotations_file, audio_dir, sample_rate, device, h5_file_
             grp = hf.create_group(f'sample_{i}')
             grp.create_dataset('data', data=mel_spectrogram.cpu().numpy())
             grp.create_dataset('label', data=label)
-            
-            data[i] = (mel_spectrogram, label)
 
     print("Dataset saved to", h5_file_path)
 
@@ -56,5 +53,6 @@ def parse_arguments():
 if __name__ == "__main__":
     args = parse_arguments()
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    os.makedirs('/data/', exist_ok=True)
     h5_file_path = os.path.join('/data/', f'{args.dataset_name}.h5')
     create_h5_dataset(args.annotations_file, args.audio_dir, args.sample_rate, device, h5_file_path)
