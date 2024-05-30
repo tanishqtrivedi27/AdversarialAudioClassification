@@ -4,6 +4,10 @@ The project deals with conducting thorough experiments to investigate the influe
 
 We also examine transferability of adversarial attacks, both class-aware and unaware, across different deep models considering both targeted and untargeted attack scenarios.
 
+```
+python train.py --dataset_name DATASET --model MODEL --batch_size BATCHES --lr LR --num_epochs EPOCHS --patience PATIENCE --num_classes NUM_CLASSES
+```
+
 ### Slides
 [Slides](https://drive.google.com/file/d/1M7Tqll-uw1JxA4CziRJ59d7gZkiMCcGT/view?usp=sharing)
 

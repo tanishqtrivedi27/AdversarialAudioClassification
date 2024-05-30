@@ -40,6 +40,3 @@ class Mixer(nn.Module):
 
     def forward(self, x):
         return self.vit_base(x)
-
-
-model = ResNet18(num_classes)

@@ -1,17 +1,14 @@
 import argparse
 
-from dataset import create_dataset
+from dataset import H5Dataset
 from model_builder import ResNet18, ResNet50, VITBase, Mixer
 from engine import train_model, test_model
+from utils import save_model
 
 import torch
 import torch.nn as nn
 from torch.utils.data import random_split
 from torch.utils.data import DataLoader
-
-"""
-python train.py --dataset_name DATASET_NAME --model MODEL_NAME --batch_size BATCH_SIZE --lr LEARNING_RATE --num_epochs NUM_EPOCHS --patience PATIENCE --num_classes NUM_CLASSES
-"""
 
 def main(args, device):
     best_loss = float('inf')
@@ -51,6 +48,8 @@ def main(args, device):
             break
 
         scheduler.step()
+    
+    save_model(model, '/models', args.model)
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Train a model on a dataset')
@@ -73,7 +72,7 @@ if __name__ == "__main__":
     torch.manual_seed(RANDOM_SEED)
     args = parse_arguments()
     
-    dataset = create_dataset(f'{args.dataset_name}.h5', device)
+    dataset = H5Dataset(f'{args.dataset_name}.h5', device)
     validation_split = 0.7
     num_validation_samples = int(validation_split * len(dataset))
     num_training_samples = len(dataset) - num_validation_samples
